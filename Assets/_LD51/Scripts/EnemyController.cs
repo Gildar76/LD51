@@ -72,7 +72,7 @@ namespace GildarGaming.LD51
         void ChangeDirection()
         {
             Vector3 dir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
-            Debug.Log("Changing direction" + dir);
+            
             moveMentDirection = dir;
             //ChangeDirectionAtBounds();
         }

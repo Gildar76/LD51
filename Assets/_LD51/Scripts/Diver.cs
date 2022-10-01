@@ -9,7 +9,7 @@ namespace GildarGaming.LD51
     {
 
         [SerializeField] float waterLevel = 6.5f;
-        Rigidbody rb;
+        Rigidbody2D rb;
         Vector3 input;
         Vector3 force = Vector3.zero;
         [SerializeField] float playerForce = 10f;
@@ -23,7 +23,7 @@ namespace GildarGaming.LD51
         
         public void Start()
         {
-            rb = GetComponent<Rigidbody>();
+            rb = GetComponent<Rigidbody2D>();
         }
         
 

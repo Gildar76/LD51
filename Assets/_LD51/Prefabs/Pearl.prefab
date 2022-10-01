@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2170841448416630119}
   - component: {fileID: 5336764570318027272}
   - component: {fileID: 6147841597554184869}
+  - component: {fileID: 3342976584194697688}
   m_Layer: 0
   m_Name: Pearl
   m_TagString: Untagged
@@ -94,9 +95,22 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &3342976584194697688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7757165329120564693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d4d00da949885b469789e7eb3e7e758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawner: {fileID: 0}

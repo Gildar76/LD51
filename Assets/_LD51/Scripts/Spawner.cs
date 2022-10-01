@@ -14,6 +14,8 @@ namespace GildarGaming.LD51
         internal void Despawn(GameObject objectToDespawn)
         {
             spawnList.Remove(objectToDespawn);
+            spawningPool.Enqueue(objectToDespawn);
+            objectToDespawn.SetActive(false);
         }
 
         Transform cameraTransfor;
@@ -38,11 +40,16 @@ namespace GildarGaming.LD51
         void Spawn()
         {
             if (spawnList.Count >= 10) CleanUp();
+            if (spawningPool.Count < 1) return;
             GameObject go = spawningPool.Dequeue();
             
             if (go != null)
             {
-                
+                Pickup pickup = go.GetComponent<Pickup>(); 
+                if (pickup != null)
+                {
+                    pickup.spawner = this;
+                }
                 go.transform.position = transform.position;
                 go.SetActive(true);
                 spawnList.Add(go);
@@ -71,7 +78,7 @@ namespace GildarGaming.LD51
         {
             for ( int i = spawnList.Count - 1; i >= 0;  i--)
             {
-                if (Mathf.Pow((spawnList[i].transform.position.x - cameraTransfor.position.x),2)  > 400f)
+                if (Mathf.Pow((spawnList[i].transform.position.x - cameraTransfor.position.x),2)  > 100f)
                 {
                     spawningPool.Enqueue(spawnList[i]);
                     spawnList[i].SetActive(false);

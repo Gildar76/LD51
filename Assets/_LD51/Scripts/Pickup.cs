@@ -6,15 +6,26 @@ namespace GildarGaming.LD51
 {
     public class Pickup : MonoBehaviour
     {
+        GameManager manager;
         public Spawner spawner;
 
-        private void OnTriggerEnter(Collider other)
+        private void Start()
         {
-            if (other.tag == "Player") 
+            manager = FindObjectOfType<GameManager>();
+        }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.tag == "Player")
             {
-                spawner.Despawn(this.gameObject);
                 
+                if (manager.AddToInventory(1))
+                {
+                    Debug.Log("Adding to inventory");
+                    spawner.Despawn(this.gameObject);
+                }
+
             }
         }
+
     }
 }

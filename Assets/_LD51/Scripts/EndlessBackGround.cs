@@ -25,7 +25,7 @@ namespace GildarGaming.LD51
                 {
 
                     if (t == this.transform) continue;
-                    print(t.gameObject.name);
+                    
                     
                     
                         
@@ -52,7 +52,7 @@ namespace GildarGaming.LD51
                 
                 isVisible = false;
                 MoveBackground(-1);
-                print("inside else if");
+                
             }
             else
             {
