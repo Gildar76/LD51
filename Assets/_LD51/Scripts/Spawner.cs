@@ -10,6 +10,12 @@ namespace GildarGaming.LD51
         [SerializeField] float spawnInterval;
         List<GameObject> spawnList = new List<GameObject>();
         float timer;
+        [SerializeField] bool randomizeX = false;
+        internal void Despawn(GameObject objectToDespawn)
+        {
+            spawnList.Remove(objectToDespawn);
+        }
+
         Transform cameraTransfor;
 
         Queue<GameObject> spawningPool = new Queue<GameObject>();
@@ -21,7 +27,7 @@ namespace GildarGaming.LD51
             spawningPool = new Queue<GameObject>();
             for (int i = 0; i < numberOfspawns; i++)
             {
-                GameObject go = Instantiate(prefab, new Vector3(0, 250, 1), Quaternion.identity, transform);
+                GameObject go = Instantiate(prefab, new Vector3(0, 250, 1), Quaternion.identity, null);
                 go.SetActive(false);
                 spawningPool.Enqueue(go);
                 
@@ -40,6 +46,11 @@ namespace GildarGaming.LD51
                 go.transform.position = transform.position;
                 go.SetActive(true);
                 spawnList.Add(go);
+                if (randomizeX)
+                {
+                    go.transform.position = new Vector3(Random.Range(transform.position.x - 40f, transform.position.x + 40f), transform.position.y, transform.position.z);
+                }
+                
 
             }
         }

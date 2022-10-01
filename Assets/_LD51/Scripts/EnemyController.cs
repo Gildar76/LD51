@@ -23,6 +23,7 @@ namespace GildarGaming.LD51
 
         public void Start()
         {
+            moveMentDirection = new Vector3(1, 0, 0);
             player = GameObject.FindWithTag("Player").transform;
             currentSpeed = normalSpeed;
         }
@@ -38,7 +39,7 @@ namespace GildarGaming.LD51
             if (hasDetectedPlayer)
             {
                 Vector3 playerDirection = (player.position - transform.position).normalized;
-                Vector3 moveMentDirection = playerDirection.normalized;
+                moveMentDirection = playerDirection.normalized;
                 
                 
                 
@@ -59,10 +60,10 @@ namespace GildarGaming.LD51
             //transform.rotation = Quaternion.LookRotation(moveMentDirection);
             if (moveMentDirection.x < 0 && transform.localScale.x > 0)
             {
-                transform.localScale = new Vector3(-transform.localScale.x,0,0);
+                transform.localScale = new Vector3(-transform.localScale.x,1,1);
             } else if (moveMentDirection.x > 0 && transform.localScale.x < 0)
             {
-                transform.localScale = new Vector3(-transform.localScale.x, 0, 0); 
+                transform.localScale = new Vector3(-transform.localScale.x, 1, 1); 
             }
             ChangeDirectionAtBounds();
             transform.position += moveMentDirection * currentSpeed * Time.deltaTime;
@@ -78,7 +79,7 @@ namespace GildarGaming.LD51
 
         private void ChangeDirectionAtBounds()
         {
-            if (transform.position.y < -21f && moveMentDirection.y < 0)
+            if (transform.position.y < -10f && moveMentDirection.y < 0)
             {
                 moveMentDirection.y *= -1;
             }
@@ -90,7 +91,11 @@ namespace GildarGaming.LD51
 
         void DetectPlayer()
         {
-            
+            if (player.position.y > 2)
+            {
+                hasDetectedPlayer = false;
+                return;
+            }
             if ((player.position - transform.position).sqrMagnitude <= detectionRange * detectionRange)
             {
                 hasDetectedPlayer = true;
@@ -103,7 +108,7 @@ namespace GildarGaming.LD51
                 hasDetectedPlayer = false;
                 if (currentSpeed > normalSpeed + 1f)
                 {
-                    StartCoroutine("ChangeSpeed");
+                    //StartCoroutine("ChangeSpeed");
                 }
             }
         }
