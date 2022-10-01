@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8125280802560479197}
   - component: {fileID: 8125280802560479198}
   - component: {fileID: 8125280802560479199}
+  - component: {fileID: 8195444678890762413}
   m_Layer: 0
   m_Name: Diver
   m_TagString: Untagged
@@ -64,6 +65,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterLevel: 6.5
   playerForce: 5
+--- !u!65 &8195444678890762413
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8125280802560479196}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8125280803989693292
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8125280803989693292}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.56, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
