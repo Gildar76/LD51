@@ -25,7 +25,9 @@ namespace GildarGaming.LD51
         public void Start()
         {
             moveMentDirection = new Vector3(1, 0, 0);
-            player = GameObject.FindWithTag("Player").transform;
+            GameObject playerObject = GameObject.FindWithTag("Player");
+            if (playerObject != null) player = playerObject.transform;
+
             currentSpeed = normalSpeed;
         }
         
@@ -92,7 +94,15 @@ namespace GildarGaming.LD51
 
         void DetectPlayer()
         {
-            if (player.position.y > 2)
+            if (player == null)
+            {
+                GameObject playerObject = GameObject.FindWithTag("Player");
+                if (playerObject == null) return;
+                player = playerObject.transform;
+
+                
+            }
+            if (!player.gameObject.activeInHierarchy || player.position.y > 3)
             {
                 hasDetectedPlayer = false;
                 return;

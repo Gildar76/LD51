@@ -70,7 +70,7 @@ namespace GildarGaming.LD51
                 Spawn();
                 timer = 0;
                 spawnInterval += Random.Range(-0.3f,0.3f);
-                if (spawnInterval < 1 || spawnInterval > 10) spawnInterval = 5;
+                if (spawnInterval < 1 || spawnInterval > 30) spawnInterval = 10;
             }
         }
 

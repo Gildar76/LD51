@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -3677528888891824669, guid: 0b9a02a13cc1e794780f368b522c06e7, type: 3}
       propertyPath: spawnInterval
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4488725990546621178, guid: 0b9a02a13cc1e794780f368b522c06e7, type: 3}
       propertyPath: m_RootOrder
