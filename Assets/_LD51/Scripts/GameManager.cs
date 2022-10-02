@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 namespace GildarGaming.LD51
 {
@@ -10,7 +11,9 @@ namespace GildarGaming.LD51
         [SerializeField] int maxInventory;
         int currentInventory = 0;
         int score = 0;
+        float oxygenTimer = 0;
 
+        float playerOxygen;
         public int MaxInventory { get => maxInventory; set => maxInventory = value; }
         public int CurrentInventory { get => currentInventory; 
             private set { 
@@ -25,6 +28,12 @@ namespace GildarGaming.LD51
         {
             CurrentInventory = 0;
 
+        }
+
+        internal void AddOxygen(int v)
+        {
+            playerOxygen += v;
+            if (playerOxygen > 10) playerOxygen = 10;
         }
 
         public bool AddToInventory(int value)
@@ -46,6 +55,23 @@ namespace GildarGaming.LD51
             currentInventory = 0;
         }
 
+        private void Update()
+        {
+            oxygenTimer += Time.deltaTime;
+            if (oxygenTimer >= 1)
+            {
+                playerOxygen -= 1f;
+                if (playerOxygen <= 0)
+                {
+                    PlayerDeath();
+                }
+            }
 
+        }
+
+        private void PlayerDeath()
+        {
+            print("You are dead");
+        }
     }
 }

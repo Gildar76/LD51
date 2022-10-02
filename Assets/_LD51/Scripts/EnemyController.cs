@@ -4,8 +4,9 @@ using System.Collections.Generic;
 
 namespace GildarGaming.LD51
 {
-    public class EnemyController : MonoBehaviour
+    public class EnemyController : MonoBehaviour, ISpawnable
     {
+        public Spawner Spawner { get; set; }
         Transform player;
         [SerializeField] float searchInterval = 2f;
         [SerializeField] float normalSpeed = 2f;

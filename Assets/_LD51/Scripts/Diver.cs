@@ -36,13 +36,14 @@ namespace GildarGaming.LD51
             {
                 force.y = 0f;
             }
+            
             rb.AddForce(force);
         }
 
         private void ApplyInputForce()
         {
-            force.x += input.x;
-            force.y += input.y;
+
+            force += input.normalized * playerForce;
         }
 
         private void ApplyWaterForce()
@@ -51,7 +52,7 @@ namespace GildarGaming.LD51
             if (transform.position.y < waterLevel)
             {
                 
-                waterForce = rb.velocity * 0.1f;
+                waterForce = rb.velocity * 0.75f;
                 waterForce.y = 9.5f;
                 force = waterForce;
                 rb.drag = 2f;
@@ -67,8 +68,8 @@ namespace GildarGaming.LD51
 
         public void Update()
         {
-            input.x = Input.GetAxis("Horizontal") * playerForce;
-            input.y = Input.GetAxis("Vertical") * playerForce;
+            input.x = Input.GetAxis("Horizontal");
+            input.y = Input.GetAxis("Vertical");
 
 
         }

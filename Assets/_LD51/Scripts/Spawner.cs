@@ -45,10 +45,10 @@ namespace GildarGaming.LD51
             
             if (go != null)
             {
-                Pickup pickup = go.GetComponent<Pickup>(); 
-                if (pickup != null)
+                ISpawnable spawned = go.GetComponent<ISpawnable>(); 
+                if (spawned != null)
                 {
-                    pickup.spawner = this;
+                    spawned.Spawner = this;
                 }
                 go.transform.position = transform.position;
                 go.SetActive(true);

@@ -4,10 +4,12 @@ using System.Collections.Generic;
 
 namespace GildarGaming.LD51
 {
-    public class Pickup : MonoBehaviour
+    public class Pickup : MonoBehaviour,ISpawnable
     {
         GameManager manager;
-        public Spawner spawner;
+        private Spawner spawner;
+
+        public Spawner Spawner { get => spawner; set => spawner = value; }
 
         private void Start()
         {
@@ -20,8 +22,8 @@ namespace GildarGaming.LD51
                 
                 if (manager.AddToInventory(1))
                 {
-                    Debug.Log("Adding to inventory");
-                    spawner.Despawn(this.gameObject);
+                    
+                    Spawner.Despawn(this.gameObject);
                 }
 
             }
