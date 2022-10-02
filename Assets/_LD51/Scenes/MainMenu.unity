@@ -323,7 +323,7 @@ GameObject:
   - component: {fileID: 548454458}
   - component: {fileID: 548454457}
   m_Layer: 5
-  m_Name: StartButton (1)
+  m_Name: Quitbtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1512,9 +1512,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Start game
-
-'
+  m_text: Quit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ca25f8899c3c8d1479a86210c895c5ba, type: 2}
   m_sharedMaterial: {fileID: -1042577359896862953, guid: ca25f8899c3c8d1479a86210c895c5ba, type: 2}
@@ -1784,7 +1782,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Deadly diving
+  m_text: DEADLY DIVING
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ca25f8899c3c8d1479a86210c895c5ba, type: 2}
   m_sharedMaterial: {fileID: -1042577359896862953, guid: ca25f8899c3c8d1479a86210c895c5ba, type: 2}

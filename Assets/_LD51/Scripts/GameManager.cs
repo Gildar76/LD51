@@ -100,7 +100,7 @@ namespace GildarGaming.LD51
         {
             if (gameOver)
             {
-                if (Input.GetKeyDown(KeyCode.Return))
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
                 {
                     
                     SceneManager.UnloadSceneAsync(1);
