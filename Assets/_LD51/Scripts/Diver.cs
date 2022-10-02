@@ -13,6 +13,11 @@ namespace GildarGaming.LD51
         Vector3 input;
         Vector3 force = Vector3.zero;
         [SerializeField] float playerForce = 10f;
+        [SerializeField] GameManager gameManager;
+        bool isDead = false;
+
+        public bool IsDead { get => isDead; set => isDead = value; }
+
         public void Reset()
         {
         }
@@ -24,6 +29,7 @@ namespace GildarGaming.LD51
         public void Start()
         {
             rb = GetComponent<Rigidbody2D>();
+            gameManager = FindObjectOfType<GameManager>();
         }
         
 
@@ -44,6 +50,13 @@ namespace GildarGaming.LD51
         {
 
             force += input.normalized * playerForce;
+            if (input.x < 0 && transform.localScale.x > 0)
+            {
+                transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            } else if (input.x > 0 && transform.localScale.x < 0)
+            {
+                transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            }
         }
 
         private void ApplyWaterForce()
@@ -63,13 +76,23 @@ namespace GildarGaming.LD51
                 rb.drag = 25f;
                 waterForce.y = -9.80f;
                 
+                
             }
         }
 
         public void Update()
         {
+            if (isDead)
+            {
+                this.enabled = false;
+                return;
+            }
             input.x = Input.GetAxis("Horizontal");
             input.y = Input.GetAxis("Vertical");
+            if (transform.position.y >= waterLevel)
+            {
+                gameManager.AddOxygen(10);
+            }
 
 
         }
