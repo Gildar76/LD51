@@ -7,11 +7,17 @@ namespace GildarGaming.LD51
     public class Boat : MonoBehaviour
     {
         [SerializeField] GameObject player;
+        public bool playerInBoat = false;
         [SerializeField] float smoothing = 5f;
         [SerializeField] Camera mainCamera;
+        GameManager gameManager;
+        public GameObject spawnPoint;
         private void Start()
         {
             mainCamera = Camera.main;
+            gameManager = FindObjectOfType<GameManager>();
+            player = gameManager.player;
+            
         }
 
         private void LateUpdate()
@@ -23,6 +29,39 @@ namespace GildarGaming.LD51
             translation.y = 0;
             transform.position += translation / (smoothing / Time.deltaTime);
 
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag == "Player")
+            {
+                playerInBoat = false;
+            }
+        }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag == "Player")
+            {
+                playerInBoat = true;
+                gameManager.AddOxygen(10);
+                //Diver diver = player.GetComponent<Diver>();
+                gameManager.EmptyInventory();
+
+
+            }
+            
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space) && playerInBoat && player.activeInHierarchy)
+            {
+                player.SetActive(false);
+            } else if (Input.GetKeyDown(KeyCode.Space) && !player.activeInHierarchy == true )
+            {
+                player.SetActive(true);
+                player.transform.position = spawnPoint.transform.position;
+            }
         }
     }
 }
