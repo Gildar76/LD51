@@ -17,7 +17,11 @@ namespace GildarGaming.LD51
             mainCamera = Camera.main;
             gameManager = FindObjectOfType<GameManager>();
             player = gameManager.player;
-            
+            playerInBoat = true;
+            player.SetActive(false);
+            gameManager.CanExitBoat();
+            gameManager.EmptyInventory();
+
         }
 
         private void LateUpdate()
@@ -36,6 +40,7 @@ namespace GildarGaming.LD51
             if (collision.gameObject.tag == "Player")
             {
                 playerInBoat = false;
+                gameManager.CanNoLongerEnterBoat();
             }
         }
         private void OnTriggerEnter2D(Collider2D collision)
@@ -45,7 +50,8 @@ namespace GildarGaming.LD51
                 playerInBoat = true;
                 gameManager.AddOxygen(10);
                 //Diver diver = player.GetComponent<Diver>();
-                gameManager.EmptyInventory();
+                
+                gameManager.CanEnterBoat();
 
 
             }
@@ -57,10 +63,13 @@ namespace GildarGaming.LD51
             if (Input.GetKeyDown(KeyCode.Space) && playerInBoat && player.activeInHierarchy)
             {
                 player.SetActive(false);
+                gameManager.CanExitBoat();
+                gameManager.EmptyInventory();
             } else if (Input.GetKeyDown(KeyCode.Space) && !player.activeInHierarchy == true )
             {
                 player.SetActive(true);
                 player.transform.position = spawnPoint.transform.position;
+                gameManager.CanNoLongerEnterBoat();
             }
         }
     }

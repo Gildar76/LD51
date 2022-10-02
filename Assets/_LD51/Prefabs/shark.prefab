@@ -218,12 +218,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6033446223547095615, guid: 7cd815f36469de545a1404bb2293d010, type: 3}
+      propertyPath: normalSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6033446223547095615, guid: 7cd815f36469de545a1404bb2293d010, type: 3}
+      propertyPath: currentSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6033446223547095615, guid: 7cd815f36469de545a1404bb2293d010, type: 3}
       propertyPath: agressiveSpeed
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6033446223547095615, guid: 7cd815f36469de545a1404bb2293d010, type: 3}
       propertyPath: detectionRange
-      value: 25
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6909056148375357200, guid: 7cd815f36469de545a1404bb2293d010, type: 3}
       propertyPath: m_Name

@@ -13,6 +13,7 @@ namespace GildarGaming.LD51
         int score = 0;
         float oxygenTimer = 0;
         public Action<string> ScoreChange;
+        public Action<string> DiveStopStart;
         public Action<string> OxygenChange;
         public Action<string> InventoryChange;
         Diver diver;
@@ -70,6 +71,21 @@ namespace GildarGaming.LD51
             InventoryChange?.Invoke(currentInventory.ToString() + "/" + maxInventory.ToString());
             AudioManager.Instance.PlayGetScore();
         }
+        public void CanEnterBoat()
+        {
+            DiveStopStart("Press space to end your dive");
+        }
+
+        public void CanNoLongerEnterBoat()
+        {
+            DiveStopStart("");
+        }
+
+        public void CanExitBoat()
+        {
+            DiveStopStart("Press space to start your next dive");
+        }
+
 
         private void Update()
         {

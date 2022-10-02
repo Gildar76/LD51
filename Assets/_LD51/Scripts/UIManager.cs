@@ -10,6 +10,7 @@ namespace GildarGaming.LD51
         [SerializeField] TMPro.TMP_Text scoreText;
         [SerializeField]  TMPro.TMP_Text inventoryText;
         [SerializeField] TMPro.TMP_Text airText;
+        [SerializeField] TMPro.TMP_Text pressSpaceText;
         [SerializeField] GameManager gameManager;
 
         private void Start()
@@ -18,7 +19,14 @@ namespace GildarGaming.LD51
             gameManager.ScoreChange += ScoreChanged;
             gameManager.InventoryChange += InventoryChanged;
             gameManager.OxygenChange += OxygenChanged;
+            gameManager.DiveStopStart += DiveStopStart;
 
+        }
+
+        private void DiveStopStart(string obj)
+        {
+            pressSpaceText.text = obj;
+            pressSpaceText.gameObject.SetActive(true);
         }
 
         private void OxygenChanged(string value)
