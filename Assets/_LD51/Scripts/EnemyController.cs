@@ -19,11 +19,12 @@ namespace GildarGaming.LD51
         float timer = 0;
         float changeDirectionTimer = 0;
         float changeDirectionInterval = 10f;
-        
+        GameManager gameManager;
 
 
         public void Start()
         {
+            gameManager = FindObjectOfType<GameManager>();
             moveMentDirection = new Vector3(1, 0, 0);
             GameObject playerObject = GameObject.FindWithTag("Player");
             if (playerObject != null) player = playerObject.transform;
@@ -137,6 +138,8 @@ namespace GildarGaming.LD51
             }
             yield return null;
         }
+
+
 
     }
 }

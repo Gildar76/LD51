@@ -15,7 +15,7 @@ namespace GildarGaming.LD51
         [SerializeField] float playerForce = 10f;
         [SerializeField] GameManager gameManager;
         bool isDead = false;
-
+        
         public bool IsDead { get => isDead; set => isDead = value; }
 
         public void Reset()
@@ -96,7 +96,15 @@ namespace GildarGaming.LD51
 
 
         }
-        
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag == "Enemy")
+            {
+                gameManager.PlayerDeath();
+            }
+        }
+
 
     }
 }

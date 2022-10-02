@@ -94,7 +94,6 @@ GameObject:
   - component: {fileID: 3772361731235262423}
   - component: {fileID: 1648218517828444282}
   - component: {fileID: 550592544600194740}
-  - component: {fileID: 7483635245452634986}
   m_Layer: 0
   m_Name: shark
   m_TagString: Untagged
@@ -167,20 +166,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7483635245452634986
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7935434555189343343}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &5946107409146472258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -233,12 +218,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6033446223547095615, guid: 7cd815f36469de545a1404bb2293d010, type: 3}
+      propertyPath: agressiveSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6033446223547095615, guid: 7cd815f36469de545a1404bb2293d010, type: 3}
       propertyPath: detectionRange
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6909056148375357200, guid: 7cd815f36469de545a1404bb2293d010, type: 3}
       propertyPath: m_Name
       value: shark
+      objectReference: {fileID: 0}
+    - target: {fileID: 6909056148375357200, guid: 7cd815f36469de545a1404bb2293d010, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cd815f36469de545a1404bb2293d010, type: 3}
@@ -260,7 +253,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.4, y: -0.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -271,7 +264,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6, y: 0.7}
+  m_Size: {x: 1, y: 0.3}
   m_EdgeRadius: 0
 --- !u!4 &4659101076725501897 stripped
 Transform:

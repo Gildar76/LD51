@@ -15,6 +15,7 @@ namespace GildarGaming.LD51
         public Action<string> ScoreChange;
         public Action<string> OxygenChange;
         public Action<string> InventoryChange;
+        Diver diver;
         int playerOxygen;
         public int MaxInventory { get => maxInventory; set => maxInventory = value; }
         public int CurrentInventory { get => currentInventory; 
@@ -34,12 +35,14 @@ namespace GildarGaming.LD51
         private void Start()
         {
             CurrentInventory = 0;
-            player.GetComponent<Diver>().IsDead = false;
+            diver = player.GetComponent<Diver>();
+            diver.IsDead = false;
 
         }
 
         internal void AddOxygen(int v)
         {
+            if (playerOxygen <= 8) AudioManager.Instance.PlayPowerUp();
             playerOxygen += v;
             if (playerOxygen > 10) playerOxygen = 10;
             OxygenChange?.Invoke(playerOxygen.ToString());
@@ -52,6 +55,7 @@ namespace GildarGaming.LD51
                 return false;
             }
             currentInventory += value;
+            AudioManager.Instance.PlayPickup();
             InventoryChange?.Invoke(currentInventory.ToString() + "/" + maxInventory.ToString());
             return true;
         }
@@ -64,10 +68,12 @@ namespace GildarGaming.LD51
             }
             currentInventory = 0;
             InventoryChange?.Invoke(currentInventory.ToString() + "/" + maxInventory.ToString());
+            AudioManager.Instance.PlayGetScore();
         }
 
         private void Update()
         {
+            if (diver.IsDead) return;
             oxygenTimer += Time.deltaTime;
             if (oxygenTimer >= 1 )
             {
@@ -75,6 +81,10 @@ namespace GildarGaming.LD51
                 {
                     oxygenTimer = 0;
                     playerOxygen -= 1;
+                    if (playerOxygen < 4)
+                    {
+                        AudioManager.Instance.PlayOxyGenAlarm();
+                    }
                     OxygenChange?.Invoke(playerOxygen.ToString());
                     if (playerOxygen <= 0)
                     {
@@ -90,9 +100,15 @@ namespace GildarGaming.LD51
 
         }
 
-        private void PlayerDeath()
+        public void PlayerDeath()
         {
-            player.GetComponent<Diver>().IsDead = true;
+            Diver diver = player.GetComponent<Diver>();
+            if (!diver.IsDead)
+            {
+                diver.IsDead = true;
+                AudioManager.Instance.PlayDeath();
+            }
+            
             print("You are dead");
         }
     }
