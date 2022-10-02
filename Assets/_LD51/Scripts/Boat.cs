@@ -62,11 +62,13 @@ namespace GildarGaming.LD51
         {
             if (Input.GetKeyDown(KeyCode.Space) && playerInBoat && player.activeInHierarchy)
             {
+                gameManager.AddOxygen(10);
                 player.SetActive(false);
                 gameManager.CanExitBoat();
                 gameManager.EmptyInventory();
             } else if (Input.GetKeyDown(KeyCode.Space) && !player.activeInHierarchy == true )
             {
+                gameManager.AddOxygen(10);
                 player.SetActive(true);
                 player.transform.position = spawnPoint.transform.position;
                 gameManager.CanNoLongerEnterBoat();

@@ -13,12 +13,23 @@ namespace GildarGaming.LD51
         [SerializeField] AudioSource getScore;
         [SerializeField] AudioSource death;
         [SerializeField] AudioSource oxygenAlarm;
-        Diver diver;
+        public Diver diver;
 
         public static AudioManager Instance;
         private void Start()
         {
-            diver = FindObjectOfType<Diver>();
+            //diver = FindObjectOfType<Diver>();
+            VolumeSettings menu = FindObjectOfType<VolumeSettings>();
+            if (menu != null)
+            {
+                waterSplash.volume = menu.Volume;
+                pickup.volume = menu.Volume;
+                powerUp.volume = menu.Volume;
+                death.volume = menu.Volume;
+                oxygenAlarm.volume = menu.Volume;
+                getScore.volume = menu.Volume;
+
+            }
         }
         AudioManager()
         {
@@ -68,5 +79,7 @@ namespace GildarGaming.LD51
             if (diver.IsDead) return;
             PlayAudioSource(oxygenAlarm);
         }
+
+
     }
 }

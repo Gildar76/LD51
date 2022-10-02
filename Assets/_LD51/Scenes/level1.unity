@@ -665,6 +665,7 @@ MonoBehaviour:
   getScore: {fileID: 1340678549}
   death: {fileID: 689213746}
   oxygenAlarm: {fileID: 59821852}
+  diver: {fileID: 821109880}
 --- !u!4 &674971226
 Transform:
   m_ObjectHideFlags: 0
@@ -1142,6 +1143,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8125280802560479197, guid: 741946cf9e26a634c9c6d3fcf1ea2f65, type: 3}
   m_PrefabInstance: {fileID: 8125280802278353832}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &821109880 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8125280802560479199, guid: 741946cf9e26a634c9c6d3fcf1ea2f65, type: 3}
+  m_PrefabInstance: {fileID: 8125280802278353832}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821109876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4edb5c153d2904c45801e9935772892b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &841198163
 GameObject:
   m_ObjectHideFlags: 0

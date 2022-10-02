@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using UnityEngine.SceneManagement;
 
 namespace GildarGaming.LD51
 {
@@ -18,6 +19,7 @@ namespace GildarGaming.LD51
         public Action<string> InventoryChange;
         Diver diver;
         int playerOxygen;
+        bool gameOver = false;
         public int MaxInventory { get => maxInventory; set => maxInventory = value; }
         public int CurrentInventory { get => currentInventory; 
             private set { 
@@ -38,6 +40,13 @@ namespace GildarGaming.LD51
             CurrentInventory = 0;
             diver = player.GetComponent<Diver>();
             diver.IsDead = false;
+
+        }
+
+        public void GameOver()
+        {
+            gameOver = true;
+            DiveStopStart("GAME OVER! Press ENTER to go back to menu");
 
         }
 
@@ -89,6 +98,18 @@ namespace GildarGaming.LD51
 
         private void Update()
         {
+            if (gameOver)
+            {
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    
+                    SceneManager.UnloadSceneAsync(1);
+                    SceneManager.LoadScene(0);
+                    
+
+                    return;
+                }
+            }
             if (diver.IsDead) return;
             oxygenTimer += Time.deltaTime;
             if (oxygenTimer >= 1 )
@@ -124,7 +145,7 @@ namespace GildarGaming.LD51
                 diver.IsDead = true;
                 AudioManager.Instance.PlayDeath();
             }
-            
+            GameOver();
             print("You are dead");
         }
     }
